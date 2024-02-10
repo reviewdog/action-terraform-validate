@@ -7,7 +7,7 @@ if [ -n "${GITHUB_WORKSPACE}" ] ; then
 fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
-echo "${INPUT_ENVVAR}" | while IFS= read -r line; do
+echo "${INPUT_ENVVARS}" | while IFS= read -r line; do
   export line
 done
 

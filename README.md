@@ -45,7 +45,7 @@ inputs:
   ### Variables for Terraform  ###
   terraform_init_options:
     description: 'options for terraform init to pass backend configuration and so on'
-  envvar:
+  envvars:
     description: 'Environment variables for terraform init to pass backend configuration'
   terraform_version:
     description: 'The terraform version to install and use. The default is `latest`'
@@ -70,6 +70,6 @@ jobs:
           # Change reporter level if you need.
           # GitHub Status Check won't become failure with warning.
           level: warning
-          envvar: |
+          envvars: |
             AWS_REGION=ap-northeast-1
 ```
