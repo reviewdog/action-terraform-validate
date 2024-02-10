@@ -11,6 +11,7 @@ echo "${INPUT_ENVVARS}" | while IFS= read -r line; do
   export line
 done
 
+# shellcheck disable=SC2086
 terraform init ${INPUT_TERRAFORM_INIT_OPTIONS}
 terraform validate -json \
   | jq -r '.diagnostics[] | "\(.range.filename):\(.range.start.line):\(.range.start.column): \(.detail)"' \
