@@ -29,8 +29,10 @@ inputs:
     description: 'Additional reviewdog flags'
     default: ''
   ### Variables for terraform validate ###
+  terraform_init_options:
+    description: 'options for terraform init to pass backend configuration and so on'
   envvar:
-    description: 'Environment variables for terraform init'
+    description: 'Environment variables for terraform init to pass backend configuration'
   terraform_version:
     description: 'The terraform version to install and use. The default is `latest`'
 runs:
