@@ -43,8 +43,10 @@ inputs:
     description: 'Additional reviewdog flags'
     default: ''
   ### Variables for Terraform  ###
+  terraform_init_options:
+    description: 'options for terraform init to pass backend configuration and so on'
   envvar:
-    description: 'Environment variables for terraform init'
+    description: 'Environment variables for terraform init to pass backend configuration'
   terraform_version:
     description: 'The terraform version to install and use. The default is `latest`'
 ```
@@ -60,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: maruLoop/action-terraform-validate@v1
+      - uses: maruloop/action-terraform-validate@v1
         with:
           github_token: ${{ secrets.github_token }}
           # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
@@ -68,4 +70,6 @@ jobs:
           # Change reporter level if you need.
           # GitHub Status Check won't become failure with warning.
           level: warning
+          envvar: |
+            AWS_REGION=ap-northeast-1
 ```

@@ -11,8 +11,6 @@ echo "${INPUT_ENVVAR}" | while IFS= read -r line; do
   export line
 done
 
-printenv
-
 terraform init ${INPUT_TERRAFORM_INIT_OPTIONS}
 terraform validate -json \
   | jq -r '.diagnostics[] | "\(.range.filename):\(.range.start.line):\(.range.start.column): \(.detail)"' \
