@@ -43,3 +43,6 @@ jobs:
           level: error
           reviewdog_flags: -filter-mode=file -fail-on-error
           workdir: ./testdata/
+          envvar: |
+            key1=value1
+            key2=value2
