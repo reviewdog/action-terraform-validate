@@ -1,6 +1,6 @@
 FROM alpine:3.19
 
-ENV REVIEWDOG_VERSION=v0.17.0
+ENV REVIEWDOG_VERSION=v0.17.1
 ENV TERRAFORM_VERSION=latest
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
