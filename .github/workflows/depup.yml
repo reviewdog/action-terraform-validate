@@ -9,6 +9,9 @@ on:
 jobs:
   reviewdog:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: reviewdog/action-depup@v1
