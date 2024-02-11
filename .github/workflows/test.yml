@@ -34,6 +34,8 @@ jobs:
     if: github.event_name == 'pull_request'
     name: runner / terraform validate (github-pr-review)
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: ./
@@ -43,6 +45,3 @@ jobs:
           level: error
           reviewdog_flags: -filter-mode=file -fail-on-error
           workdir: ./testdata/
-          envvar: |
-            KEY1=value1
-            KEY2=value2
