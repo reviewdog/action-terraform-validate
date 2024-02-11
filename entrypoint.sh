@@ -7,12 +7,9 @@ if [ -n "${GITHUB_WORKSPACE}" ] ; then
 fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
-echo "${INPUT_ENVVARS}" | while IFS= read -r line; do
-  export line
-done
 
+terraform init -backend=false
 # shellcheck disable=SC2086
-terraform init ${INPUT_TERRAFORM_INIT_OPTIONS}
 terraform validate -json \
   | jq -r '.diagnostics[] | "\(.range.filename):\(.range.start.line):\(.range.start.column): \(.detail)"' \
   | reviewdog -efm="%f:%l:%c:%m" \
