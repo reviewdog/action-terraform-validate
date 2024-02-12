@@ -44,7 +44,7 @@ inputs:
     default: ''
   ### Variables for Terraform  ###
   terraform_version:
-    description: 'The terraform version to install and use. The default is `latest`'
+    description: 'The terraform version to install and use.'
 ```
 
 ## Usage
