@@ -48,8 +48,17 @@ jobs:
           file: Dockerfile
           version_name: TERRAFORM_VERSION
           repo: hashicorp/terraform
+      - name: Check if the latest version matches x.y.z
+        id: check_version
+        run: |
+          if [[ "${{ steps.depup.outputs.latest }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "match=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "match=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Create Pull Request
+        if: steps.check_version.outputs.match == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
