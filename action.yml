@@ -8,6 +8,9 @@ inputs:
   workdir:
     description: 'Working directory relative to the root directory.'
     default: '.'
+  terraform_cloud_token:
+    description: 'The terraform token for authentication with private registries.'
+    default: ''
   ### Flags for reviewdog ###
   level:
     description: 'Report level for reviewdog [info,warning,error]'
