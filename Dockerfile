@@ -1,7 +1,7 @@
 FROM alpine:3.20
 
-ARG REVIEWDOG_VERSION=v0.17.4
 ARG TERRAFORM_VERSION=1.7.3
+ARG REVIEWDOG_VERSION=v0.17.4
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
