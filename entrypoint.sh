@@ -8,10 +8,24 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+jq_script='
+.diagnostics[]
+| {
+  severity: (.severity|ascii_upcase),
+  message: "\(.summary)\n\(.detail)",
+  location: {
+    path: .range.filename,
+    range: {
+      start: (.range.start|{line, column}),
+      end: (.range.end|{line, column})},
+    },
+}
+'
+
 terraform init -backend=false
 # shellcheck disable=SC2086
 terraform validate -json \
-  | jq -r '.diagnostics[] | "\(.range.filename):\(.range.start.line):\(.range.start.column): \(.detail)"' \
+  | jq "$jq_script" -c \
   | reviewdog -efm="%f:%l:%c:%m" \
       -name="terraform validate" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
