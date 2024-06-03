@@ -32,7 +32,7 @@ terraform init -backend=false
 # shellcheck disable=SC2086
 terraform validate -json \
   | jq "$jq_script" -c \
-  | reviewdog -efm="%f:%l:%c:%m" \
+  | reviewdog -f="rdjsonl" \
       -name="terraform validate" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
