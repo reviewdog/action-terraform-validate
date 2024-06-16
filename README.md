@@ -6,6 +6,7 @@
 [![release](https://github.com/maruLoop/action-terraform-validate/workflows/release/badge.svg)](https://github.com/maruLoop/action-terraform-validate/actions?query=workflow%3Arelease)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/maruLoop/action-terraform-validate?logo=github&sort=semver)](https://github.com/maruLoop/action-terraform-validate/releases)
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
+[![Used-by counter](https://img.shields.io/endpoint?url=https://haya14busa.github.io/github-used-by/data/reviewdog/action-terraform-validate/shieldsio.json)](https://github.com/haya14busa/github-used-by/tree/main/repo/reviewdog/action-terraform-validate)
 
 ![github-pr-review demo](images/pr-comment.png)
 ![github-pr-check demo](images/pr-check.png)
