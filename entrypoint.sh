@@ -13,6 +13,7 @@ wget -q https://releases.hashicorp.com/terraform/"${TERRAFORM_VERSION}"/terrafor
     && rm -rf ./terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
+export TF_TOKEN_app_terraform_io="${INPUT_TERRAFORM_CLOUD_TOKEN}"
 
 jq_script='
 .diagnostics[]
