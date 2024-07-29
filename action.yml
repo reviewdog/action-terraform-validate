@@ -34,7 +34,7 @@ inputs:
   ### Variables for terraform validate ###
   terraform_version:
     description: 'The terraform version to install and use.'
-    default: '1.7.3'
+    default: '1.9.3'
 runs:
   using: 'docker'
   image: 'Dockerfile'
