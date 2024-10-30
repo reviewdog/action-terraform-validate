@@ -39,6 +39,12 @@ inputs:
       Exit code for reviewdog when errors are found [true,false]
       Default is `false`.
     default: 'false'
+  name:
+    description: |
+      Tool name shown in review comment for reviewdog.
+      Also serves as an identifier to indicate which comments reviewdog should overwrite.
+      Useful in monorepos with multiple root modules where terraform validate needs to be run multiple times.
+    default: 'terraform validate'
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
@@ -48,6 +54,8 @@ inputs:
 ```
 
 ## Usage
+
+### For single root module
 
 ```yaml
 name: reviewdog
@@ -66,4 +74,32 @@ jobs:
           # Change reporter level if you need.
           # GitHub Status Check won't become failure with warning.
           level: warning
+```
+
+### For multiple root modules
+
+```yaml
+name: reviewdog
+on: [pull_request]
+jobs:
+  terraform_validate:
+    name: runner / terraform validate
+    strategy:
+      matrix:
+        root_module:
+          - development
+          - production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-terraform-validate@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+          reporter: github-pr-review
+          # Change reporter level if you need.
+          # GitHub Status Check won't become failure with warning.
+          level: warning
+          # Explicitly specify a unique name for each job to prevent reviewdog from overwriting comments across jobs.
+          name: terraform validate ${{ matrix.root_module }}
 ```
