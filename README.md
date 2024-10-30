@@ -95,11 +95,10 @@ jobs:
       - uses: reviewdog/action-terraform-validate@v1
         with:
           github_token: ${{ secrets.github_token }}
-          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
           reporter: github-pr-review
-          # Change reporter level if you need.
-          # GitHub Status Check won't become failure with warning.
           level: warning
+          # Explicitly specify a root module path for each job.
+          workdir: ./terraform/${{ matrix.root_module }}
           # Explicitly specify a unique name for each job to prevent reviewdog from overwriting comments across jobs.
           name: terraform validate ${{ matrix.root_module }}
 ```
