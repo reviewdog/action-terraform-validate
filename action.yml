@@ -28,6 +28,12 @@ inputs:
       Exit code for reviewdog when errors are found [true,false]
       Default is `false`.
     default: 'false'
+  name:
+    description: |
+      Tool name shown in review comment for reviewdog.
+      Also serves as an identifier to indicate which comments reviewdog should overwrite.
+      Useful in monorepos with multiple root modules where terraform validate needs to be run multiple times.
+    default: 'terraform validate'
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
