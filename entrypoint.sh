@@ -8,9 +8,17 @@ if [ -n "${GITHUB_WORKSPACE}" ] ; then
   git config --global --add safe.directory "${GITHUB_WORKSPACE}" || exit 1
 fi
 
-wget -q https://releases.hashicorp.com/terraform/"${TERRAFORM_VERSION}"/terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip \
-    && unzip ./terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip -d /usr/local/bin/ \
-    && rm -rf ./terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip
+UNAME_ARCH="$(uname -m)"
+case "${UNAME_ARCH}" in
+  x86*)      ARCH=amd64;;
+  arm64)     ARCH=arm64;;
+  aarch64)   ARCH=arm64;;
+  *)         echo "Unsupported architecture: ${UNAME_ARCH}. Only AMD64 and ARM64 are supported by the action" && exit 1
+esac
+
+wget -q "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCH}".zip \
+    && unzip "./terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip" -d /usr/local/bin/ \
+    && rm -rf "./terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 export TF_TOKEN_app_terraform_io="${INPUT_TERRAFORM_CLOUD_TOKEN}"
