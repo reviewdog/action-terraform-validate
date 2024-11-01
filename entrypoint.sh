@@ -42,7 +42,7 @@ terraform init -backend=false
 terraform validate -json \
   | jq "$jq_script" -c \
   | reviewdog -f="rdjsonl" \
-      -name="terraform validate" \
+      -name="${INPUT_NAME}" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
