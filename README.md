@@ -74,8 +74,8 @@ jobs:
     name: runner / terraform validate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: reviewdog/action-terraform-validate@v1
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: reviewdog/action-terraform-validate@9903ffe0b439c6fd28a7c91c13168e5d58cc8085 # v1.15.3
         with:
           github_token: ${{ secrets.github_token }}
           # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
@@ -100,8 +100,8 @@ jobs:
           - production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: reviewdog/action-terraform-validate@v1
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: reviewdog/action-terraform-validate@9903ffe0b439c6fd28a7c91c13168e5d58cc8085 # v1.15.3
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
