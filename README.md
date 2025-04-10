@@ -60,6 +60,9 @@ inputs:
   ### Variables for Terraform  ###
   terraform_version:
     description: 'The terraform version to install and use.'
+  cli:
+    description: 'Execution tool name. e.g.) "terraform", "opentofu"'
+    default: "terraform"
 ```
 
 ## Usage
