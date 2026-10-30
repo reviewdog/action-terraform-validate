@@ -4,29 +4,29 @@
 version: 'v0.0.3'
 workflows:
     '.github/workflows/depup.yml':
-        - 'actions/checkout@v6.0.3'
+        - 'actions/checkout@v7.0.1'
         - 'peter-evans/create-pull-request@v8.1.1'
         - 'reviewdog/action-depup@v1.6.4'
     '.github/workflows/dockerimage.yml':
-        - 'actions/checkout@v6.0.3'
+        - 'actions/checkout@v7.0.1'
     '.github/workflows/release.yml':
-        - 'actions/checkout@v6.0.3'
+        - 'actions/checkout@v7.0.1'
         - 'haya14busa/action-bumpr@v1.11.4'
         - 'haya14busa/action-cond@v1.2.1'
         - 'haya14busa/action-update-semver@v1.5.1'
     '.github/workflows/reviewdog.yml':
-        - 'actions/checkout@v6.0.3'
+        - 'actions/checkout@v7.0.1'
         - 'haya14busa/action-cond@v1.2.1'
         - 'reviewdog/action-alex@v1.16.1'
         - 'reviewdog/action-hadolint@v1.50.5'
         - 'reviewdog/action-misspell@v1.30.4'
         - 'reviewdog/action-shellcheck@v1.32.0'
     '.github/workflows/test.yml':
-        - 'actions/checkout@v6.0.3'
+        - 'actions/checkout@v7.0.1'
 dependencies:
-    'actions/checkout@v6.0.3':
-        ref: 'v6.0.3'
-        commit: 'sha1-df4cb1c069e1874edd31b4311f1884172cec0e10'
+    'actions/checkout@v7.0.1':
+        ref: 'v7.0.1'
+        commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
     'haya14busa/action-bumpr@v1.11.4':
